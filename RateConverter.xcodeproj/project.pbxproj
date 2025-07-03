@@ -15,6 +15,9 @@
 		3AF2EEB22E0E3B6600EF0CC2 /* RateConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF2EEB12E0E3B6600EF0CC2 /* RateConverterTests.swift */; };
 		3AF2EEBC2E0E3B6600EF0CC2 /* RateConverterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF2EEBB2E0E3B6600EF0CC2 /* RateConverterUITests.swift */; };
 		3AF2EEBE2E0E3B6600EF0CC2 /* RateConverterUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF2EEBD2E0E3B6600EF0CC2 /* RateConverterUITestsLaunchTests.swift */; };
+		3AF2EECD2E138E1000EF0CC2 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF2EECC2E138E1000EF0CC2 /* HTTPClient.swift */; };
+		3AF2EECF2E14DCEE00EF0CC2 /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF2EECE2E14DCEE00EF0CC2 /* RequestType.swift */; };
+		3AF2EED12E15889F00EF0CC2 /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF2EED02E15889F00EF0CC2 /* URLSessionHTTPClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,9 @@
 		3AF2EEB72E0E3B6600EF0CC2 /* RateConverterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RateConverterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AF2EEBB2E0E3B6600EF0CC2 /* RateConverterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateConverterUITests.swift; sourceTree = "<group>"; };
 		3AF2EEBD2E0E3B6600EF0CC2 /* RateConverterUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateConverterUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		3AF2EECC2E138E1000EF0CC2 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		3AF2EECE2E14DCEE00EF0CC2 /* RequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestType.swift; sourceTree = "<group>"; };
+		3AF2EED02E15889F00EF0CC2 /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +103,7 @@
 		3AF2EE992E0E3B6400EF0CC2 /* RateConverter */ = {
 			isa = PBXGroup;
 			children = (
+				3AF2EECB2E138BE400EF0CC2 /* NetworKModule */,
 				3AF2EE9A2E0E3B6400EF0CC2 /* AppDelegate.swift */,
 				3AF2EE9C2E0E3B6400EF0CC2 /* SceneDelegate.swift */,
 				3AF2EE9E2E0E3B6400EF0CC2 /* ViewController.swift */,
@@ -110,6 +117,7 @@
 		3AF2EEB02E0E3B6600EF0CC2 /* RateConverterTests */ = {
 			isa = PBXGroup;
 			children = (
+				3AF2EED22E16295800EF0CC2 /* New Group */,
 				3AF2EEB12E0E3B6600EF0CC2 /* RateConverterTests.swift */,
 			);
 			path = RateConverterTests;
@@ -122,6 +130,23 @@
 				3AF2EEBD2E0E3B6600EF0CC2 /* RateConverterUITestsLaunchTests.swift */,
 			);
 			path = RateConverterUITests;
+			sourceTree = "<group>";
+		};
+		3AF2EECB2E138BE400EF0CC2 /* NetworKModule */ = {
+			isa = PBXGroup;
+			children = (
+				3AF2EECC2E138E1000EF0CC2 /* HTTPClient.swift */,
+				3AF2EECE2E14DCEE00EF0CC2 /* RequestType.swift */,
+				3AF2EED02E15889F00EF0CC2 /* URLSessionHTTPClient.swift */,
+			);
+			path = NetworKModule;
+			sourceTree = "<group>";
+		};
+		3AF2EED22E16295800EF0CC2 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,7 +281,10 @@
 			files = (
 				3AF2EE9F2E0E3B6400EF0CC2 /* ViewController.swift in Sources */,
 				3AF2EE9B2E0E3B6400EF0CC2 /* AppDelegate.swift in Sources */,
+				3AF2EECD2E138E1000EF0CC2 /* HTTPClient.swift in Sources */,
 				3AF2EE9D2E0E3B6400EF0CC2 /* SceneDelegate.swift in Sources */,
+				3AF2EECF2E14DCEE00EF0CC2 /* RequestType.swift in Sources */,
+				3AF2EED12E15889F00EF0CC2 /* URLSessionHTTPClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
