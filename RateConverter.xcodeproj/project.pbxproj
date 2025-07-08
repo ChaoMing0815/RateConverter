@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3AA724E82E194A9D000CBF00 /* CacheStoreError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA724E72E194A9D000CBF00 /* CacheStoreError.swift */; };
+		3AA724EA2E1B66D7000CBF00 /* RetriveCacheResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA724E92E1B66D7000CBF00 /* RetriveCacheResult.swift */; };
+		3AA724ED2E1B6BF4000CBF00 /* ActorCacheStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA724EC2E1B6BF4000CBF00 /* ActorCacheStore.swift */; };
+		3AA724EF2E1B6FA5000CBF00 /* ActorCodableCacheStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA724EE2E1B6FA5000CBF00 /* ActorCodableCacheStore.swift */; };
+		3AA724F12E1B6FD3000CBF00 /* ActorCodableCacheStoreWithExpiry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA724F02E1B6FD3000CBF00 /* ActorCodableCacheStoreWithExpiry.swift */; };
 		3AF2EE9B2E0E3B6400EF0CC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF2EE9A2E0E3B6400EF0CC2 /* AppDelegate.swift */; };
 		3AF2EE9D2E0E3B6400EF0CC2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF2EE9C2E0E3B6400EF0CC2 /* SceneDelegate.swift */; };
 		3AF2EE9F2E0E3B6400EF0CC2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF2EE9E2E0E3B6400EF0CC2 /* ViewController.swift */; };
@@ -40,6 +45,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3AA724E72E194A9D000CBF00 /* CacheStoreError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheStoreError.swift; sourceTree = "<group>"; };
+		3AA724E92E1B66D7000CBF00 /* RetriveCacheResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetriveCacheResult.swift; sourceTree = "<group>"; };
+		3AA724EC2E1B6BF4000CBF00 /* ActorCacheStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorCacheStore.swift; sourceTree = "<group>"; };
+		3AA724EE2E1B6FA5000CBF00 /* ActorCodableCacheStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorCodableCacheStore.swift; sourceTree = "<group>"; };
+		3AA724F02E1B6FD3000CBF00 /* ActorCodableCacheStoreWithExpiry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorCodableCacheStoreWithExpiry.swift; sourceTree = "<group>"; };
 		3AF2EE972E0E3B6400EF0CC2 /* RateConverter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RateConverter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AF2EE9A2E0E3B6400EF0CC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3AF2EE9C2E0E3B6400EF0CC2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +94,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3AA724E62E16C43E000CBF00 /*  CacheStore */ = {
+			isa = PBXGroup;
+			children = (
+				3AA724EB2E1B6BC8000CBF00 /* CodableData */,
+				3AA724E72E194A9D000CBF00 /* CacheStoreError.swift */,
+				3AA724E92E1B66D7000CBF00 /* RetriveCacheResult.swift */,
+			);
+			path = " CacheStore";
+			sourceTree = "<group>";
+		};
+		3AA724EB2E1B6BC8000CBF00 /* CodableData */ = {
+			isa = PBXGroup;
+			children = (
+				3AA724EC2E1B6BF4000CBF00 /* ActorCacheStore.swift */,
+				3AA724EE2E1B6FA5000CBF00 /* ActorCodableCacheStore.swift */,
+				3AA724F02E1B6FD3000CBF00 /* ActorCodableCacheStoreWithExpiry.swift */,
+			);
+			path = CodableData;
+			sourceTree = "<group>";
+		};
 		3AF2EE8E2E0E3B6400EF0CC2 = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +137,7 @@
 		3AF2EE992E0E3B6400EF0CC2 /* RateConverter */ = {
 			isa = PBXGroup;
 			children = (
+				3AA724E62E16C43E000CBF00 /*  CacheStore */,
 				3AF2EECB2E138BE400EF0CC2 /* NetworKModule */,
 				3AF2EE9A2E0E3B6400EF0CC2 /* AppDelegate.swift */,
 				3AF2EE9C2E0E3B6400EF0CC2 /* SceneDelegate.swift */,
@@ -286,7 +317,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AF2EE9F2E0E3B6400EF0CC2 /* ViewController.swift in Sources */,
+				3AA724EF2E1B6FA5000CBF00 /* ActorCodableCacheStore.swift in Sources */,
 				3AF2EE9B2E0E3B6400EF0CC2 /* AppDelegate.swift in Sources */,
+				3AA724F12E1B6FD3000CBF00 /* ActorCodableCacheStoreWithExpiry.swift in Sources */,
+				3AA724EA2E1B66D7000CBF00 /* RetriveCacheResult.swift in Sources */,
+				3AA724ED2E1B6BF4000CBF00 /* ActorCacheStore.swift in Sources */,
+				3AA724E82E194A9D000CBF00 /* CacheStoreError.swift in Sources */,
 				3AF2EECD2E138E1000EF0CC2 /* HTTPClient.swift in Sources */,
 				3AF2EE9D2E0E3B6400EF0CC2 /* SceneDelegate.swift in Sources */,
 				3AF2EECF2E14DCEE00EF0CC2 /* RequestType.swift in Sources */,
