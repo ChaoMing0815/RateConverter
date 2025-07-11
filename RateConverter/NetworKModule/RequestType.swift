@@ -46,3 +46,21 @@ public extension RequestType {
         return urlRequest
     }
 }
+
+// MARK: - Implement RequestType
+public struct Request: RequestType {
+    public var baseURL: URL
+    public var path: String
+    public var queryItems: [URLQueryItem]
+    public var method: HTTPMethod
+    public var body: Data?
+    public var headers: [String : String]?
+    public init(baseURL: URL, path: String, queryItems: [URLQueryItem], method: HTTPMethod, body: Data? = nil, headers: [String : String]? = nil) {
+        self.baseURL = baseURL
+        self.path = path
+        self.queryItems = queryItems
+        self.method = method
+        self.body = body
+        self.headers = headers
+    }
+}
