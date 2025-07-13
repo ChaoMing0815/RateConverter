@@ -16,6 +16,7 @@
 		3AA724F62E1D5B44000CBF00 /* GetCurrenciesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA724F52E1D5B44000CBF00 /* GetCurrenciesUseCase.swift */; };
 		3AA724FA2E1DFCD2000CBF00 /* RemoteCurrenciesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA724F92E1DFCD2000CBF00 /* RemoteCurrenciesRepository.swift */; };
 		3AA724FD2E1E09D4000CBF00 /* RatesDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA724FC2E1E09D4000CBF00 /* RatesDTO.swift */; };
+		3AA724FF2E20BC37000CBF00 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA724FE2E20BC37000CBF00 /* AppConfig.swift */; };
 		3AF2EE9B2E0E3B6400EF0CC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF2EE9A2E0E3B6400EF0CC2 /* AppDelegate.swift */; };
 		3AF2EE9D2E0E3B6400EF0CC2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF2EE9C2E0E3B6400EF0CC2 /* SceneDelegate.swift */; };
 		3AF2EE9F2E0E3B6400EF0CC2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF2EE9E2E0E3B6400EF0CC2 /* ViewController.swift */; };
@@ -156,6 +157,14 @@
 			path = DTOs;
 			sourceTree = "<group>";
 		};
+		3AA725002E20BCA8000CBF00 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				3AA724FE2E20BC37000CBF00 /* AppConfig.swift */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
 		3AF2EE8E2E0E3B6400EF0CC2 = {
 			isa = PBXGroup;
 			children = (
@@ -179,6 +188,7 @@
 		3AF2EE992E0E3B6400EF0CC2 /* RateConverter */ = {
 			isa = PBXGroup;
 			children = (
+				3AA725002E20BCA8000CBF00 /* Configuration */,
 				3AA724F82E1D6A0D000CBF00 /* DataLayer */,
 				3AA724F22E1D2A40000CBF00 /* DomainLayer */,
 				3AA724E62E16C43E000CBF00 /*  CacheStore */,
@@ -361,6 +371,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AF2EE9F2E0E3B6400EF0CC2 /* ViewController.swift in Sources */,
+				3AA724FF2E20BC37000CBF00 /* AppConfig.swift in Sources */,
 				3AA724EF2E1B6FA5000CBF00 /* ActorCodableCacheStore.swift in Sources */,
 				3AF2EE9B2E0E3B6400EF0CC2 /* AppDelegate.swift in Sources */,
 				3AA724F12E1B6FD3000CBF00 /* ActorCodableCacheStoreWithExpiry.swift in Sources */,
