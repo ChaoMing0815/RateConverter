@@ -31,12 +31,13 @@ final class RequestTests: XCTestCase {
             body: nil,
             headers: nil
         )
+  
         let expected = "https://openexchangerates.org/api/currencies.json?app_id=TEST_APP_ID"
         XCTAssertEqual(request.fullURL.absoluteString, expected)
     }
     
     func test_urlRequest_shouldUseCorrectHTTPMethod() {
-        let baseURL = URL(string: "https://example.com")!
+        let baseURL = URL(string: "https://example.com/")!
         let request = TestRequest(
             baseURL: baseURL,
             path: "test.json",
