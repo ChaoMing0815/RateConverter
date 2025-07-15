@@ -19,3 +19,79 @@ protocol GetCurrenciesUseCaseProtocol {
     func getLatestCurrencies() async throws -> [Rate]
     func getStoredCurrencyList() async throws -> [String]
 }
+
+class GetCurrenciesUseCase: GetCurrenciesUseCaseProtocol {
+    let remoteRepository: RemoteCurrenciesRepository
+    let storeRepository: StoreCurrenciesRepository
+    private var latestRates: [Rate] = []
+    
+    init(remoteRepository: RemoteCurrenciesRepository, storeRepository: StoreCurrenciesRepository) {
+        self.remoteRepository = remoteRepository
+        self.storeRepository = storeRepository
+    }
+    
+    func getLatestCurrencies() async throws -> [Rate] {
+        let currentTimeStamp = Date().timeIntervalSince1970
+        
+        do {
+            let lastFetchTime = try await storeRepository.getLastFetchTime()
+            if isFetchNeeded(lastFetchTime: lastFetchTime, currentTimeStamp: currentTimeStamp) {
+                let rates = try await fetchFromRemoteAndUpdateStore(currentTimeStamp: currentTimeStamp)
+                latestRates = rates
+                return rates
+            } else {
+                let rates = try await fetchFromLocal()
+                latestRates = rates
+                return rates
+            }
+        } catch {
+            throw GetCurrenciesUseCaseError.failedToGetCurrencies
+        }
+    }
+    
+    func getStoredCurrencyList() async throws -> [String] {
+        if latestRates.isEmpty {
+            latestRates = try await getLatestCurrencies()
+        }
+        return latestRates.map { $0.currency }.sorted()
+    }
+    
+    
+}
+
+// MARK: - Private helpers
+extension GetCurrenciesUseCase {
+    // MARK: - Check if fetching is needed
+    private func isFetchNeeded(lastFetchTime: TimeInterval, currentTimeStamp: TimeInterval) -> Bool {
+        return (currentTimeStamp - lastFetchTime) > 1800 // Refresh if more than 30 minutes (1800 seconds) have passed
+    }
+    
+    // MARK: - Fetch from remote and update local storage
+    private func fetchFromRemoteAndUpdateStore(currentTimeStamp: TimeInterval) async throws -> [Rate] {
+        let getCurrenciesResult = await remoteRepository.getCurrencies()
+        
+        switch getCurrenciesResult {
+        case let .success(ratesDTO):
+            do {
+                try await storeRepository.saveLastFetchTime(timeStamp: currentTimeStamp)
+                try await storeRepository.saveCurrencies(ratesDTO)
+                return ratesDTO.domainModels
+            } catch {
+                throw GetCurrenciesUseCaseError.failedToSaveCurrencies
+            }
+        case .failure:
+            throw GetCurrenciesUseCaseError.failedToSaveCurrencies
+        }
+    }
+    
+    // MARK: - Fetch from local storage
+    private func fetchFromLocal() async throws -> [Rate] {
+        do {
+            let ratesDTO = try await storeRepository.getCurrencies()
+            return ratesDTO.domainModels
+        } catch {
+            throw GetCurrenciesUseCaseError.failedToGetCurrencies
+        }
+        
+    }
+}

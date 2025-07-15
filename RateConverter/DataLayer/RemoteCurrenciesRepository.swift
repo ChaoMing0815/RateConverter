@@ -12,20 +12,23 @@ enum RemoteCurrenciesRepositoryError: Error {
 }
 
 protocol RemoteCurrenciesRepositoryProtocol {
-    func getCurrencies() async -> Result<RatesDTO, RemoteCurrenciesRepositoryError>
+    func getCurrencies() async throws -> Result<RatesDTO, RemoteCurrenciesRepositoryError>
 }
 
 class RemoteCurrenciesRepository: RemoteCurrenciesRepositoryProtocol {
-    let appID = "9655c63914c648e58c1ed5f8c97c61f6"
-    let client: URLSessionHTTPClient
-    init(client: URLSessionHTTPClient) {
+    private let appID: String
+    private let baseURL: URL
+    private let client: URLSessionHTTPClient
+    init(appID: String = AppConfig.appID, baseURL: URL = AppConfig.baseURL, client: URLSessionHTTPClient) {
+        self.appID = appID
+        self.baseURL = baseURL
         self.client = client
     }
     
     func getCurrencies() async -> Result<RatesDTO, RemoteCurrenciesRepositoryError> {
         let path = "latest.json"
-        let queryItems = [URLQueryItem(name: "app_id", value: appID)]        
-        let request = Request(baseURL: URL(string: "https://openexchangerates.org/api/")!, path: path, queryItems: queryItems, method: .get)
+        let queryItems = [URLQueryItem(name: "app_id", value: appID)]
+        let request = Request(baseURL: baseURL, path: path, queryItems: queryItems, method: .get)
         
         return await withCheckedContinuation { continuation in
             client.request(with: request) { result in
