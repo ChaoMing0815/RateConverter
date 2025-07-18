@@ -54,7 +54,7 @@ class StoreCurrenciesRepository: StoreCurrenciesRepositoryProtocol {
                     throw StoreCurrenciesRepositoryError.failedToGetLastFetchTime
                 }
                 return time
-            case .failure(let error):
+            case .failure:
                 throw StoreCurrenciesRepositoryError.failedToGetLastFetchTime
             }
         }

@@ -18,6 +18,7 @@
 		3AA724FD2E1E09D4000CBF00 /* RatesDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA724FC2E1E09D4000CBF00 /* RatesDTO.swift */; };
 		3AA724FF2E20BC37000CBF00 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA724FE2E20BC37000CBF00 /* AppConfig.swift */; };
 		3AA725022E20C7F9000CBF00 /* StoreCurrenciesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA725012E20C7F9000CBF00 /* StoreCurrenciesRepository.swift */; };
+		3AA725042E274156000CBF00 /* ConvertCurrenciesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA725032E274156000CBF00 /* ConvertCurrenciesUseCase.swift */; };
 		3AF2EE9B2E0E3B6400EF0CC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF2EE9A2E0E3B6400EF0CC2 /* AppDelegate.swift */; };
 		3AF2EE9D2E0E3B6400EF0CC2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF2EE9C2E0E3B6400EF0CC2 /* SceneDelegate.swift */; };
 		3AF2EE9F2E0E3B6400EF0CC2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF2EE9E2E0E3B6400EF0CC2 /* ViewController.swift */; };
@@ -62,6 +63,7 @@
 		3AA724FC2E1E09D4000CBF00 /* RatesDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesDTO.swift; sourceTree = "<group>"; };
 		3AA724FE2E20BC37000CBF00 /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		3AA725012E20C7F9000CBF00 /* StoreCurrenciesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreCurrenciesRepository.swift; sourceTree = "<group>"; };
+		3AA725032E274156000CBF00 /* ConvertCurrenciesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertCurrenciesUseCase.swift; sourceTree = "<group>"; };
 		3AF2EE972E0E3B6400EF0CC2 /* RateConverter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RateConverter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AF2EE9A2E0E3B6400EF0CC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3AF2EE9C2E0E3B6400EF0CC2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			children = (
 				3AA724F72E1D5B4E000CBF00 /* DomainModel */,
 				3AA724F52E1D5B44000CBF00 /* GetCurrenciesUseCase.swift */,
+				3AA725032E274156000CBF00 /* ConvertCurrenciesUseCase.swift */,
 			);
 			path = DomainLayer;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 				3AF2EE9D2E0E3B6400EF0CC2 /* SceneDelegate.swift in Sources */,
 				3AA724F42E1D2A6E000CBF00 /* Rate.swift in Sources */,
 				3AF2EECF2E14DCEE00EF0CC2 /* RequestType.swift in Sources */,
+				3AA725042E274156000CBF00 /* ConvertCurrenciesUseCase.swift in Sources */,
 				3AF2EED12E15889F00EF0CC2 /* URLSessionHTTPClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
