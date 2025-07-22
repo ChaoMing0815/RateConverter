@@ -12,7 +12,7 @@ enum ConverterViewModelError: Error {
     case failedToFetchRates
     case unknownError
     
-    var localizdeDescription: String {
+    var localizedDescription: String {
         switch self {
         case .unableToConvert(let from, let to):
             return "Unable to convert from \(from) to \(to) using available exchange rates."
@@ -32,7 +32,7 @@ class ConverterViewModel {
     var convertedResultHandler: (([(String, Float)]) -> Void)?
     var currencyListUpdatedHandler: ((Int) -> Void)?
     var errorHandler: ((String) -> Void)?
-    var isLoadingHadler: ((Bool) -> Void)?
+    var isLoadingHandler: ((Bool) -> Void)?
     
     var currencyList: [String] = []
     let defaultSelectedCurrency = "USD"
@@ -44,17 +44,17 @@ class ConverterViewModel {
     }
     
     // MARK: - Fetch latest exchange rates
-    func fetchLastestCurrencies() async {
+    func fetchLatestCurrencies() async {
         do {
-            isLoadingHadler?(true)
+            isLoadingHandler?(true)
             let rates = try await getCurrenciesUseCase.getLatestCurrencies()
             currencyList = rates.map { $0.currency }.sorted()
             convertCurrenciesUseCase.updateRates(rates)
-            isLoadingHadler?(false)
+            isLoadingHandler?(false)
             
             currencyListUpdatedHandler?(currencyList.firstIndex(of: defaultSelectedCurrency) ?? 0)
         } catch {
-            isLoadingHadler?(false)
+            isLoadingHandler?(false)
             errorHandler?(ConverterViewModelError.failedToFetchRates.localizedDescription)
         }
     }
@@ -62,7 +62,7 @@ class ConverterViewModel {
     // MARK: - Perform currency conversion
     func doConvertProcess(fromCurrency: String, toCurrency: String, amount: Float) async {
         do {
-            isLoadingHadler?(true)
+            isLoadingHandler?(true)
             
             if convertCurrenciesUseCase.rates.isEmpty {
                 let latestRate = try await getCurrenciesUseCase.getLatestCurrencies()
@@ -71,16 +71,16 @@ class ConverterViewModel {
             
             let converted = try convertCurrenciesUseCase.convert(fromCurrency, toCurrency: toCurrency, withAmount: amount)
             
-            isLoadingHadler?(false)
+            isLoadingHandler?(false)
             convertedAmountHandler?(converted)
         } catch let error as ConverterViewModelError {
-            isLoadingHadler?(false)
+            isLoadingHandler?(false)
             errorHandler?(error.localizedDescription)
-        } catch _ as ConverterViewModelError {
-            isLoadingHadler?(false)
+        } catch _ as ConvertCurrenciesUseCaseError {
+            isLoadingHandler?(false)
             errorHandler?(ConverterViewModelError.unableToConvert(fromCurrency: fromCurrency, toCurrency: toCurrency).localizedDescription)
         } catch {
-            isLoadingHadler?(false)
+            isLoadingHandler?(false)
             errorHandler?(ConverterViewModelError.unknownError.localizedDescription)
         }
     }
@@ -100,5 +100,4 @@ class ConverterViewModel {
     func setSelectedCurrency(_ currency: String) {
         selectedCurrency = currency
     }
-
 }
