@@ -21,6 +21,8 @@
 		3AA725042E274156000CBF00 /* ConvertCurrenciesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA725032E274156000CBF00 /* ConvertCurrenciesUseCase.swift */; };
 		3AA725082E2A9078000CBF00 /* ConverterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA725072E2A9078000CBF00 /* ConverterViewModel.swift */; };
 		3AA7250A2E2DD76B000CBF00 /* ConverterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA725092E2DD76B000CBF00 /* ConverterViewController.swift */; };
+		3AA7250D2E2F25DF000CBF00 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3AA7250C2E2F25DF000CBF00 /* SnapKit */; };
+		3AA7250F2E2F2B23000CBF00 /* ConversionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA7250E2E2F2B23000CBF00 /* ConversionCell.swift */; };
 		3AF2EE9B2E0E3B6400EF0CC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF2EE9A2E0E3B6400EF0CC2 /* AppDelegate.swift */; };
 		3AF2EE9D2E0E3B6400EF0CC2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF2EE9C2E0E3B6400EF0CC2 /* SceneDelegate.swift */; };
 		3AF2EE9F2E0E3B6400EF0CC2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF2EE9E2E0E3B6400EF0CC2 /* ViewController.swift */; };
@@ -68,6 +70,7 @@
 		3AA725032E274156000CBF00 /* ConvertCurrenciesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertCurrenciesUseCase.swift; sourceTree = "<group>"; };
 		3AA725072E2A9078000CBF00 /* ConverterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterViewModel.swift; sourceTree = "<group>"; };
 		3AA725092E2DD76B000CBF00 /* ConverterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterViewController.swift; sourceTree = "<group>"; };
+		3AA7250E2E2F2B23000CBF00 /* ConversionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionCell.swift; sourceTree = "<group>"; };
 		3AF2EE972E0E3B6400EF0CC2 /* RateConverter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RateConverter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AF2EE9A2E0E3B6400EF0CC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3AF2EE9C2E0E3B6400EF0CC2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AA7250D2E2F25DF000CBF00 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,6 +193,7 @@
 		3AA725062E2A9064000CBF00 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3AA7250E2E2F2B23000CBF00 /* ConversionCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -285,6 +290,9 @@
 			dependencies = (
 			);
 			name = RateConverter;
+			packageProductDependencies = (
+				3AA7250C2E2F25DF000CBF00 /* SnapKit */,
+			);
 			productName = RateConverter;
 			productReference = 3AF2EE972E0E3B6400EF0CC2 /* RateConverter.app */;
 			productType = "com.apple.product-type.application";
@@ -357,6 +365,9 @@
 				Base,
 			);
 			mainGroup = 3AF2EE8E2E0E3B6400EF0CC2;
+			packageReferences = (
+				3AA7250B2E2F25DF000CBF00 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 3AF2EE982E0E3B6400EF0CC2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -413,6 +424,7 @@
 				3AA724ED2E1B6BF4000CBF00 /* ActorCacheStore.swift in Sources */,
 				3AA724E82E194A9D000CBF00 /* CacheStoreError.swift in Sources */,
 				3AF2EECD2E138E1000EF0CC2 /* HTTPClient.swift in Sources */,
+				3AA7250F2E2F2B23000CBF00 /* ConversionCell.swift in Sources */,
 				3AF2EE9D2E0E3B6400EF0CC2 /* SceneDelegate.swift in Sources */,
 				3AA724F42E1D2A6E000CBF00 /* Rate.swift in Sources */,
 				3AF2EECF2E14DCEE00EF0CC2 /* RequestType.swift in Sources */,
@@ -757,6 +769,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3AA7250B2E2F25DF000CBF00 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3AA7250C2E2F25DF000CBF00 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3AA7250B2E2F25DF000CBF00 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3AF2EE8F2E0E3B6400EF0CC2 /* Project object */;
 }
