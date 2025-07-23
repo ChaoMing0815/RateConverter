@@ -10,4 +10,9 @@ import Foundation
 enum AppConfig {
     static let baseURL = URL(string: "https://openexchangerates.org/api/")!
     static let appID = "9655c63914c648e58c1ed5f8c97c61f6"
+    
+    static let currenciesCacheFileName = "currencies_info.json"
+    static let cacheExpiryInterval: TimeInterval = 60 * 30 // 30 mins
+    
+    static let defaultSelectedCurrency = "USD"
 }
