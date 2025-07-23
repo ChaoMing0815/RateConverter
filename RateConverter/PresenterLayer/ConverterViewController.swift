@@ -31,7 +31,9 @@ class ConverterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupUI()
+        setupBindings()
+        Task { await viewModel.fetchLatestCurrencies() }
     }
     
     // MARK: - Actions
@@ -49,7 +51,7 @@ class ConverterViewController: UIViewController {
         amountTextField.resignFirstResponder()
     }
     
-    private func showErorrAlert(message: String) {
+    private func showErrorAlert(message: String) {
         let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         present(alert, animated: true)
@@ -75,7 +77,7 @@ extension ConverterViewController {
         }
         
         viewModel.errorHandler = { [weak self] error in
-            DispatchQueue.main.async { self?.showErorrAlert(message: error) }
+            DispatchQueue.main.async { self?.showErrorAlert(message: error) }
         }
         
         viewModel.isLoadingHandler = { [weak self] isLoading in
@@ -102,9 +104,66 @@ extension ConverterViewController {
         view.addSubview(conversionCollectionView)
         view.addSubview(activityIndicator)
         
+        amountTextField.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(20)
+            make.left.right.equalToSuperview().inset(20)
+            make.height.equalTo(44)
+        }
         
+        currencyPicker.snp.makeConstraints { make in
+            make.top.equalTo(amountTextField.snp.bottom).offset(10)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(150)
+            make.height.equalTo(100)
+        }
         
+        conversionCollectionView.snp.makeConstraints { make in
+            make.top.equalTo(currencyPicker.snp.bottom).offset(20)
+            make.left.right.bottom.equalToSuperview().inset(20)
+        }
+        
+        activityIndicator.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
+        
+        currencyPicker.delegate = self
+        currencyPicker.dataSource = self
+        conversionCollectionView.delegate = self
+        conversionCollectionView.dataSource = self
+        
+        amountTextField.addTarget(self, action: #selector(amountTextFieldDidChange), for: .editingChanged)
     }
+}
+
+// MARK: - UIPickerView Delegate & DataSource
+extension ConverterViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return viewModel.currencyList.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return viewModel.currencyList[row]
+    }
+        
+}
+
+// MARK: - UICollectionView Delegate & DataSource
+extension ConverterViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return conversionResults.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ConversionCell", for: indexPath) as! ConversionCell
+        let result = conversionResults[indexPath.row]
+        cell.configure(currency: result.0, amount: result.1)
+        return cell
+    }
+    
 }
 
 // MARK: - Factory methods
@@ -128,7 +187,7 @@ extension ConverterViewController {
         layout.minimumLineSpacing = 10
         layout.itemSize = CGSize(width: 100, height: 100)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: String(describing: "UICollectionViewCell"))
+        collectionView.register(ConversionCell.self, forCellWithReuseIdentifier: "ConversionCell")
         return collectionView
     }
     
