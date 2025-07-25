@@ -5,14 +5,14 @@
 
 # RateConverter
 ### 摘要
-RateConverter 是一款簡易匯率換算 App，採用 **Clean Architecture** 與 **MVVM 架構**，提供線上即時匯率查詢，並以 Actor 為基礎的快取模組支援離線模式。
+RateConverter 是一款簡易匯率換算 App，採用 **Clean Architecture** 與 **MVVM 架構**，可以線上查詢即時匯率，並且提供以 Actor 為基礎的快取模組支援離線模式。
 
 ### 架構圖
 ![RateConverter Architecture](https://github.com/ChaoMing0815/RateConverter/blob/main/RateConverter.drawio.png)
 
 ### 功能特色
 - 使用 Open Exchange Rates API 即時匯率轉換
-- 內建 30 分鐘有效期的本地快取（支援離線）
+- 內建 60 分鐘有效期的本地快取（支援離線）
 - 支援所有主要幣別
 - UIKit + SnapKit 簡潔介面設計
 - 使用 async/await 處理非同步請求
