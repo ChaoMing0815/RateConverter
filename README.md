@@ -1,6 +1,6 @@
 ## Demo Video
 <div align="center">
-[Demo Video](https://github.com/user-attachments/assets/0064a372-d5e4-4134-b359-80ce5b112bfb)
+<video src="https://github.com/user-attachments/assets/0064a372-d5e4-4134-b359-80ce5b112bfb">
 </div>
 
 # RateConverter
