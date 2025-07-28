@@ -74,7 +74,7 @@ enum AppConfig {
     static let baseURL = URL(string: "https://openexchangerates.org/api/")!
     static let appID = "your_app_id"
     static let currenciesCacheFileName = "currencies_cache.json"
-    static let expiryDuration: TimeInterval = 1800 // 30分鐘
+    static let expiryDuration: TimeInterval = 60 * 60 // 60 分鐘
 }
 ```
 
