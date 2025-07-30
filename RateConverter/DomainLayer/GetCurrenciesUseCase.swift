@@ -21,11 +21,11 @@ protocol GetCurrenciesUseCaseProtocol {
 }
 
 class GetCurrenciesUseCase: GetCurrenciesUseCaseProtocol {
-    let remoteRepository: RemoteCurrenciesRepository
-    let storeRepository: StoreCurrenciesRepository
+    let remoteRepository: RemoteCurrenciesRepositoryProtocol
+    let storeRepository: StoreCurrenciesRepositoryProtocol
     private var latestRates: [Rate] = []
     
-    init(remoteRepository: RemoteCurrenciesRepository, storeRepository: StoreCurrenciesRepository) {
+    init(remoteRepository: RemoteCurrenciesRepositoryProtocol, storeRepository: StoreCurrenciesRepositoryProtocol) {
         self.remoteRepository = remoteRepository
         self.storeRepository = storeRepository
     }

@@ -26,14 +26,28 @@ final class RequestTests: XCTestCase {
         let request = TestRequest(
             baseURL: baseURL,
             path: "currencies.json",
-            queryItems: [URLQueryItem(name: "app_id", value: "TEST_APP_ID")],
+            queryItems: [URLQueryItem(name: "app_id", value: AppConfig.appID)],
             method: .get,
             body: nil,
             headers: nil
         )
-  
-        let expected = "https://openexchangerates.org/api/currencies.json?app_id=TEST_APP_ID"
+        let expected = "https://openexchangerates.org/api/currencies.json?app_id=\(AppConfig.appID)"
         XCTAssertEqual(request.fullURL.absoluteString, expected)
+        
+        // Test request
+        let exp = expectation(description: "Wait for request")
+        
+        let httpClient = URLSessionHTTPClient.init(session: .init(configuration: .ephemeral))
+        httpClient.request(with: request) { result in
+            switch result {
+            case let .success(data, _):
+                print(data)
+            case .failure:
+                break
+            }
+            exp.fulfill()
+        }
+        waitForExpectations(timeout: 20)
     }
     
     func test_urlRequest_shouldUseCorrectHTTPMethod() {

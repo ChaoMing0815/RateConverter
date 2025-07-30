@@ -12,7 +12,7 @@ enum RemoteCurrenciesRepositoryError: Error {
 }
 
 protocol RemoteCurrenciesRepositoryProtocol {
-    func getCurrencies() async throws -> Result<RatesDTO, RemoteCurrenciesRepositoryError>
+    func getCurrencies() async -> Result<RatesDTO, RemoteCurrenciesRepositoryError>
 }
 
 class RemoteCurrenciesRepository: RemoteCurrenciesRepositoryProtocol {
