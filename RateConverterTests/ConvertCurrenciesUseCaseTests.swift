@@ -1,5 +1,5 @@
 //
-//  ConvertCurrenciesUseCaseTest.swift
+//  ConvertCurrenciesUseCaseTests.swift
 //  RateConverterTests
 //
 //  Created by 黃昭銘 on 2025/7/31.
@@ -10,7 +10,7 @@ import XCTest
 
 
 
-final class ConvertCurrenciesUseCaseTest: XCTest {
+final class ConvertCurrenciesUseCaseTests: XCTest {
     var useCase: ConvertCurrenciesUseCase!
     
     override func setUp() {
