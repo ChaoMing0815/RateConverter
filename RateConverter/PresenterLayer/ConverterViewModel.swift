@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ConverterViewModelError: Error {
+enum ConverterViewModelError: Error, Equatable {
     case unableToConvert(fromCurrency: String, toCurrency: String)
     case failedToFetchRates
     case unknownError

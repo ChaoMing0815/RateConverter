@@ -51,16 +51,18 @@ final class GetCurrenciesUseCaseTests: XCTest {
     var mockRemoteRepository: MockRemoteCurrenciesRepository!
     var mockSotreRepository: MockStoreCurrenciesRepository!
     
-    override func setUp() async throws {
+    override func setUp() {
+        super.setUp()
         mockRemoteRepository = MockRemoteCurrenciesRepository()
         mockSotreRepository = MockStoreCurrenciesRepository()
         useCase = GetCurrenciesUseCase(remoteRepository: mockRemoteRepository, storeRepository: mockSotreRepository)
     }
     
-    override func tearDown() async throws {
+    override func tearDown() {
         useCase = nil
         mockRemoteRepository = nil
         mockSotreRepository = nil
+        super.tearDown()
     }
     
     // MARK: - Test fetching from local storage when refresh is not needed
@@ -102,6 +104,8 @@ final class GetCurrenciesUseCaseTests: XCTest {
             XCTFail("Expected failedToGetCurrenciesError but got success")
         } catch let error as GetCurrenciesUseCaseError {
             XCTAssertEqual(error, .failedToGetCurrencies)
+        } catch {
+            XCTFail("Unexpected error type: \(error)")
         }
     }
     
@@ -116,6 +120,8 @@ final class GetCurrenciesUseCaseTests: XCTest {
             XCTFail("Expected failedToGetCurrenciesError but got success")
         } catch let error as GetCurrenciesUseCaseError {
             XCTAssertEqual(error, .failedToGetCurrencies)
+        } catch {
+            XCTFail("Unexpected error type: \(error)")
         }
     }
     
@@ -128,6 +134,8 @@ final class GetCurrenciesUseCaseTests: XCTest {
             XCTFail("Expected failedToGetCurrenciesError but got success")
         } catch let error as GetCurrenciesUseCaseError {
             XCTAssertEqual(error, .failedToGetCurrencies)
+        } catch {
+            XCTFail("Unexpected error type: \(error)")
         }
     }
     
@@ -144,6 +152,8 @@ final class GetCurrenciesUseCaseTests: XCTest {
             XCTFail("Expected failToSaveCurrencies error but got success")
         } catch let error as GetCurrenciesUseCaseError {
             XCTAssertEqual(error, .failedToSaveCurrencies)
+        } catch {
+            XCTFail("Unexpected error type: \(error)")
         }
     }
 }

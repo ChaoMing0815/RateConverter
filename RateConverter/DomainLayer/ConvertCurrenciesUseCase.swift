@@ -8,7 +8,7 @@
 import Foundation
 
 // Error types for ConvertCurrenciesUseCase
-enum ConvertCurrenciesUseCaseError: Error {
+enum ConvertCurrenciesUseCaseError: Error, Equatable {
     case unableToConvert(fromCurrency: String, toCurrency: String)
     
     var localizedDescription: String {
@@ -55,7 +55,6 @@ class ConvertCurrenciesUseCase: ConvertCurrenciesUseCaseProtocol {
             }
             return (rate.currency, convertedAmount)
         }
-        
     }
 }
 
