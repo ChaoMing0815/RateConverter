@@ -80,4 +80,5 @@ enum AppConfig {
 
 ### 單元測試
 - 網路模組單元測試
+- `GetCurrenciesUseCaseTest`
 
