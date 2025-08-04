@@ -8,9 +8,7 @@
 import XCTest
 @testable import RateConverter
 
-
-
-final class ConvertCurrenciesUseCaseTests: XCTest {
+final class ConvertCurrenciesUseCaseTests: XCTestCase {
     var useCase: ConvertCurrenciesUseCase!
     
     override func setUp() {

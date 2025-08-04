@@ -46,7 +46,7 @@ class MockStoreCurrenciesRepository: StoreCurrenciesRepositoryProtocol {
     }
 }
 
-final class GetCurrenciesUseCaseTests: XCTest {
+final class GetCurrenciesUseCaseTests: XCTestCase {
     var useCase: GetCurrenciesUseCase!
     var mockRemoteRepository: MockRemoteCurrenciesRepository!
     var mockSotreRepository: MockStoreCurrenciesRepository!
