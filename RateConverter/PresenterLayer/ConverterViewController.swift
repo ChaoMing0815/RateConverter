@@ -86,7 +86,7 @@ extension ConverterViewController {
             }
         }
         
-        viewModel.currencyListUpdatedHandler = { [weak self] selectedCurrencyIndex in
+        viewModel.defaultCurrencySelectionHandler = { [weak self] selectedCurrencyIndex in
             DispatchQueue.main.async {
                 self?.currencyPicker.reloadAllComponents()
                 self?.currencyPicker.selectRow(selectedCurrencyIndex, inComponent: 0, animated: false)

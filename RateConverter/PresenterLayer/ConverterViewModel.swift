@@ -30,7 +30,7 @@ class ConverterViewModel {
     
     var convertedAmountHandler: ((Float) -> Void)?
     var convertedResultHandler: (([(String, Float)]) -> Void)?
-    var currencyListUpdatedHandler: ((Int) -> Void)?
+    var defaultCurrencySelectionHandler: ((Int) -> Void)?
     var errorHandler: ((String) -> Void)?
     var isLoadingHandler: ((Bool) -> Void)?
     
@@ -52,7 +52,7 @@ class ConverterViewModel {
             convertCurrenciesUseCase.updateRates(rates)
             isLoadingHandler?(false)
             
-            currencyListUpdatedHandler?(currencyList.firstIndex(of: defaultSelectedCurrency) ?? 0)
+            defaultCurrencySelectionHandler?(currencyList.firstIndex(of: defaultSelectedCurrency) ?? 0)
         } catch {
             isLoadingHandler?(false)
             errorHandler?(ConverterViewModelError.failedToFetchRates.localizedDescription)
