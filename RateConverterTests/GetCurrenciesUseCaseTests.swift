@@ -22,9 +22,11 @@ class MockStoreCurrenciesRepository: StoreCurrenciesRepositoryProtocol {
     var lastFetchTime: TimeInterval?
     var storedRates: RatesDTO?
     var shouldThrowError = false
+    var shouldThrowErrorOnSaveLastFetchTime = false
+    var shouldThrowErrorOnSaveCurrencies = false
     
     func saveLastFetchTime(timeStamp: TimeInterval) async throws {
-        if shouldThrowError { throw GetCurrenciesUseCaseError.failedToSaveCurrenciesTimeStamp }
+        if shouldThrowErrorOnSaveLastFetchTime { throw GetCurrenciesUseCaseError.failedToSaveCurrenciesTimeStamp }
         lastFetchTime = timeStamp
     }
     
@@ -35,7 +37,7 @@ class MockStoreCurrenciesRepository: StoreCurrenciesRepositoryProtocol {
     }
     
     func saveCurrencies(_ rates: RateConverter.RatesDTO) async throws {
-        if shouldThrowError { throw GetCurrenciesUseCaseError.failedToSaveCurrencies }
+        if shouldThrowErrorOnSaveCurrencies { throw GetCurrenciesUseCaseError.failedToSaveCurrencies }
         storedRates = rates
     }
     
@@ -145,7 +147,7 @@ final class GetCurrenciesUseCaseTests: XCTestCase {
         mockSotreRepository.lastFetchTime = oldFetchTime
         let expectedRates = RatesDTO(rates: ["USD": 1.2])
         mockRemoteRepository.ratesResponse = .success(expectedRates)
-        mockSotreRepository.shouldThrowError = true
+        mockSotreRepository.shouldThrowErrorOnSaveCurrencies = true
         
         do {
             _ = try await useCase.getLatestCurrencies()
