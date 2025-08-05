@@ -27,7 +27,13 @@ public class URLSessionHTTPClient: NSObject, HTTPClient {
                 completion(.failure(.cannotFindDataOrResponse))
                 return
             }
-            completion(.success(data, response))
+            
+            if (200..<300).contains(response.statusCode) {
+                completion(.success(data, response))
+            } else {
+                completion(.failure(.responseError))
+            }
+            
         }.resume()
     }
 }

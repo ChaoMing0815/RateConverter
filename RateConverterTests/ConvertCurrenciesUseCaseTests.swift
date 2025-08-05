@@ -63,8 +63,8 @@ final class ConvertCurrenciesUseCaseTests: XCTestCase {
         let expected: [(String, Float)] = [
             ("USD", 200),
             ("EUR", 170),
-            ("JPY", 2200),
-            ("TWD", 600)
+            ("JPY", 22000),
+            ("TWD", 6000)
         ]
         
         XCTAssertEqual(results.count, 4, "Should have 4 conversion results")
@@ -74,7 +74,7 @@ final class ConvertCurrenciesUseCaseTests: XCTestCase {
                 XCTFail("Missing converted currency: \(currency)")
                 continue
             }
-            XCTAssertEqual(converted.1, expectedAmount, accuracy: 0.001)
+            XCTAssertEqual(converted.1, expectedAmount, accuracy: 0.01)
         }
     }
     

@@ -44,6 +44,8 @@ class GetCurrenciesUseCase: GetCurrenciesUseCaseProtocol {
                 latestRates = rates
                 return rates
             }
+        }  catch let error as GetCurrenciesUseCaseError {
+            throw error
         } catch {
             throw GetCurrenciesUseCaseError.failedToGetCurrencies
         }
@@ -74,13 +76,19 @@ extension GetCurrenciesUseCase {
         case let .success(ratesDTO):
             do {
                 try await storeRepository.saveLastFetchTime(timeStamp: currentTimeStamp)
+            } catch {
+                throw GetCurrenciesUseCaseError.failedToSaveCurrenciesTimeStamp
+            }
+            
+            do {
                 try await storeRepository.saveCurrencies(ratesDTO)
-                return ratesDTO.domainModels
             } catch {
                 throw GetCurrenciesUseCaseError.failedToSaveCurrencies
             }
+            return ratesDTO.domainModels
+            
         case .failure:
-            throw GetCurrenciesUseCaseError.failedToSaveCurrencies
+            throw GetCurrenciesUseCaseError.failedToGetCurrencies
         }
     }
     
